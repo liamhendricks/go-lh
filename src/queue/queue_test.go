@@ -32,4 +32,11 @@ func TestStaticQueue(t *testing.T) {
 	val := q.Dequeue()
 	// popped element should not be 0, since it should have auto popped
 	assert.Equal(t, val, int64(1))
+
+	q = NewStaticQueue(10)
+	for i := 0; i < 10; i++ {
+		q.Enqueue(int64(i))
+	}
+	a := q.Average()
+	assert.Equal(t, a, float32(4.5))
 }

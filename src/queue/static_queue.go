@@ -1,7 +1,5 @@
 package queue
 
-import "fmt"
-
 // this queue stays <= maxSize
 type StaticQueue struct {
 	values  []int64
@@ -20,7 +18,6 @@ func (q *StaticQueue) Size() int {
 }
 
 func (q *StaticQueue) Empty() bool {
-	fmt.Printf("size: %d\n", q.Size())
 	return q.Size() == 0
 }
 

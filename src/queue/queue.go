@@ -1,10 +1,13 @@
 package queue
 
+import "github.com/liamhendricks/go-lh/src/contracts"
+
 type Queue interface {
 	Enqueue(interface{})
 	Dequeue() interface{}
 	Size() int
 	Empty() bool
+	contracts.CanAverage
 }
 
 type LHQueue struct {
@@ -33,6 +36,10 @@ func (queue *LHQueue) Empty() bool {
 
 func (queue *LHQueue) Size() int {
 	return len(queue.items)
+}
+
+func (queue *LHQueue) Average() float32 {
+	return 0
 }
 
 func newLHQueue() *LHQueue {
