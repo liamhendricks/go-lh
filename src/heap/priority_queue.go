@@ -32,7 +32,6 @@ func (pq *LHPriorityQueue) Insert(key int) {
 
 func (pq *LHPriorityQueue) insert(key int) {
 	pq.data = append(pq.data, key)
-	fmt.Printf("inserting: %d\n", key)
 	pq.heapifyUp()
 }
 
@@ -48,7 +47,7 @@ func (pq *LHPriorityQueue) Peek() int {
 	defer pq.lock.Unlock()
 
 	if len(pq.data) == 0 {
-		return 0
+		return -1
 	}
 
 	return pq.data[0]
@@ -60,7 +59,7 @@ func (pq *LHPriorityQueue) Poll() int {
 	defer pq.lock.Unlock()
 
 	if len(pq.data) == 0 {
-		return 0
+		return -1
 	}
 
 	item := pq.data[0]

@@ -1,8 +1,9 @@
 package heap
 
 import (
-	"fmt"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestHeap(t *testing.T) {
@@ -17,6 +18,7 @@ func TestHeap(t *testing.T) {
 	pq.Insert(13)
 	for pq.Size() > 0 {
 		v := pq.Poll()
-		fmt.Printf("%d\n", v)
+		top := pq.Peek()
+		assert.Greater(t, v, top)
 	}
 }
