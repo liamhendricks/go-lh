@@ -7,7 +7,7 @@ import (
 )
 
 func TestHeap(t *testing.T) {
-	var pq Heap = newLHPriorityQueue()
+	var pq Heap = NewLHPriorityQueue()
 	pq.Insert(5)
 	pq.Insert(10)
 	pq.Insert(8)

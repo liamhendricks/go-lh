@@ -1,7 +1,5 @@
 package sorting
 
-import "fmt"
-
 // O(nlogn)
 func mergeSort(data []int) []int {
 	if len(data) == 1 {
@@ -27,7 +25,6 @@ func mergeArrs(left, right []int) []int {
 		}
 	}
 
-	fmt.Printf("%v", newArr)
 	for k := i; k < len(left); k++ {
 		newArr = append(newArr, left[k])
 	}

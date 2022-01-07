@@ -5,13 +5,13 @@ import (
 	"sync"
 )
 
-// priority queue using a min heap
+// priority queue using a max heap
 type LHPriorityQueue struct {
 	data []int
 	lock sync.RWMutex
 }
 
-func newLHPriorityQueue() *LHPriorityQueue {
+func NewLHPriorityQueue() *LHPriorityQueue {
 	return &LHPriorityQueue{
 		data: []int{},
 		lock: sync.RWMutex{},
