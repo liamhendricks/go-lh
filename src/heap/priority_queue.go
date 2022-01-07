@@ -73,40 +73,26 @@ func (pq *LHPriorityQueue) Poll() int {
 
 func (pq *LHPriorityQueue) heapifyDown() {
 	i := 0
-
-	for {
-		lci := leftChildIndex(i)
-		if lci >= len(pq.data) {
+	for leftChildIndex(i) < pq.Size() {
+		var k int = rightChildIndex(i)
+		var j int = leftChildIndex(i)
+		if k < pq.Size() && pq.data[j] < pq.data[k] {
+			j++
+		}
+		if pq.data[i] > pq.data[j] {
 			break
 		}
-
-		rci := rightChildIndex(i)
-		smallerIndex := lci
-		if rci < len(pq.data) && rci < lci {
-			smallerIndex = rci
-		}
-
-		if pq.data[i] < pq.data[smallerIndex] {
-			break
-		} else {
-			pq.swap(i, smallerIndex)
-		}
-
-		i = smallerIndex
+		pq.swap(i, j)
+		i = j
 	}
 }
 
 func (pq *LHPriorityQueue) heapifyUp() {
 	i := len(pq.data) - 1
 
-	for {
-		j := parentIndex(i)
-		if j >= 0 && pq.parent(i) > pq.data[i] {
-			pq.swap(j, i)
-			i = j
-		} else {
-			break
-		}
+	for i > 0 && pq.parent(i) < pq.data[i] {
+		pq.swap(parentIndex(i), i)
+		i = parentIndex(i)
 	}
 }
 
